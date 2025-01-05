@@ -10,7 +10,7 @@ const Valid_forms = () => {
              max-w-[500px] w-full px-8 py-16 bg-red-300/20 border-blue-300/20 border-[3px]
              border-l-blue-300/20 border-b-blue-400/20 border-l-[1px] border-b-[1px]
              rounded-lg backdrop-blur-sm '>
-                
+                <input type="text" className="relative px-2 py-3 bg-slate-300/20" placeholder='Your Name' />
             
 
             </form>
