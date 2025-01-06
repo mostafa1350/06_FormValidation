@@ -7,11 +7,11 @@ const Valid_forms = () => {
      overflow-hidden ' style={{backgroundImage:`url(${GrayFox})`}}>
         <div className='flex justify-center items-center w-full h-full bg-blue-400/20'>
             <form action="" className='relative flex flex-col justify-center items-center
-             max-w-[500px] w-full px-8 py-16 bg-white/20 border-blue-700/20 border-[3px]
+             max-w-[350px] max-h-[280px] w-full px-8 py-16 bg-white/20 border-blue-700/20 border-[3px]
              border-l-blue-700/20 border-b-blue-700/20 border-l-[1px] border-b-[1px]
              rounded-lg backdrop-blur-sm '>
-                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white my-5" placeholder='Write Your Name' />
-                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white" placeholder='Write Your Family' />
+                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white my-5" placeholder='Write Your Full Name' />
+                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white" placeholder='Write Your email' />
                 <button type="submit" className="relative my-6 bg-gradient-to-tr from-slate-200 via-red-200 to-green-200 py-2 px-[70px] tracking-wider rounded-md">Register</button>
             </form>
         </div>
