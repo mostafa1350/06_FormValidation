@@ -3,18 +3,17 @@ import GrayFox from '../assets/images/Gray_Fox.jpg';
 const Valid_forms = () => {
   return (
     
-    <div className='h-[100vh] w-full bg-blue-200/5  bg-auto bg-no-repeat  bg-center 
-     overflow-hidden' style={{backgroundImage:`url(${GrayFox})`}}>
-        <div className='flex justify-center items-center w-full h-full bg-blue-400/50'>
+    <div className='h-[100vh] w-full bg-blue-200/30  bg-auto bg-no-repeat  bg-center 
+     overflow-hidden ' style={{backgroundImage:`url(${GrayFox})`}}>
+        <div className='flex justify-center items-center w-full h-full bg-blue-400/20'>
             <form action="" className='relative flex flex-col justify-center items-center
-             max-w-[500px] w-full px-8 py-16 bg-red-300/20 border-blue-300/20 border-[3px]
-             border-l-blue-300/20 border-b-blue-400/20 border-l-[1px] border-b-[1px]
+             max-w-[500px] w-full px-8 py-16 bg-white/20 border-blue-700/20 border-[3px]
+             border-l-blue-700/20 border-b-blue-700/20 border-l-[1px] border-b-[1px]
              rounded-lg backdrop-blur-sm '>
-                <input type="text" className="relative px-2 py-3 bg-slate-300/20" placeholder='Your Name' />
-            
-
+                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white my-5" placeholder='Write Your Name' />
+                <input type="text" className="relative px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white" placeholder='Write Your Family' />
+                <button type="submit" className="relative my-6 bg-gradient-to-tr from-slate-200 via-red-200 to-green-200 py-2 px-[70px] tracking-wider rounded-md">Register</button>
             </form>
-
         </div>
     </div>
   )
