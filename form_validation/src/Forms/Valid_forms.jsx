@@ -1,24 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import GrayFox from '../assets/images/Gray_Fox.jpg';
 const Valid_forms = () => {
 
   const initialValues = { username: "", email: "", password: "" };
-  const [formValues, setFormValuse] = useState(initialValues);
+  const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  // ====================
   const handleChange = (e) => {
-    const { name, value } = e.target;//target, when an element want to create an event in the next
-    setFormValuse({ ...formvalues, [name]: value }) //[name]:value , is an key for each param
-
-  }
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-  }
-  //we want to validate the forms ...
-  const validate =(values) =>{
+    setIsSubmit(true);
+  };
+
+  useEffect(() => {
+    console.log(formErrors);
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(formValues);
+    }
+  }, [formErrors]);
+  const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.username) {
@@ -37,17 +43,22 @@ const Valid_forms = () => {
       errors.password = "Password cannot exceed more than 10 characters";
     }
     return errors;
-
-
-  }
-
+  };
 
   return (
 
     <div className='h-[100vh] w-full bg-blue-200/30  bg-auto bg-no-repeat  bg-center 
      overflow-hidden ' style={{ backgroundImage: `url(${GrayFox})` }}>
       <div className='flex justify-center items-center w-full h-full bg-blue-400/20'>
-        <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+
+      
+      {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <div className="ui message success">Signed in successfully</div>
+      ) : (
+        // <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
+        <p>Error retrieve...</p>
+      )}
+      
         <form
           onSubmit={handleSubmit}
           action=""
@@ -65,9 +76,10 @@ const Valid_forms = () => {
             value={formValues.username}
             onChange={handleChange}
             required={true}
-            minLength={8}
-            pattern='/.*[0-9].*/'
-            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white " />
+            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white "
+            />
+            <p className='text-red-500 italic'>{formErrors.username}</p>
+            {/* <p>form p is ... skjaksdjh</p> */}
 
           <div className='flex justify-start items-center w-[180px]'>
             <label htmlFor="" className='' >email</label>
@@ -78,8 +90,10 @@ const Valid_forms = () => {
             placeholder='email'
             value={formValues.email}
             onChange={handleChange}
-            required={true}
-            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white" />
+            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-green-300 placeholder-white"
+          />
+          <p className='text-red-500 italic'>{formErrors.email}</p>
+
 
           <div className='flex justify-start items-center w-[180px]'>
             <label htmlFor="" className='' >Password</label>
@@ -90,10 +104,10 @@ const Valid_forms = () => {
             placeholder='password'
             value={formValues.password}
             onChange={handleChange}
-            required={true}
-            minLength={8}
-            pattern=''
-            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-slate-700 placeholder-white" />
+            className="relative my-2 px-2 py-3 bg-yellow-400/20 rounded-md text-slate-700 placeholder-white"
+          />
+          <p className='text-red-500 italic'>{formErrors.password}</p>
+
 
           <button type="submit" className="relative my-3 bg-gradient-to-tr from-slate-200 via-red-200 to-green-200 py-2 px-[70px] tracking-wider rounded-md">Register</button>
         </form>
